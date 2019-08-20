@@ -10,7 +10,7 @@ You need Go installed.
 
 You should use some sort of text editing software. 
 
-* [Visual Studio Code](https://code.visualstudio.com/Download) works well
+* [Visual Studio Code](https://code.visualstudio.com/Download) with Go Plugin
 * [Goland](https://www.jetbrains.com/go/) is more full featured IDE \(Not Free\)
 
 
