@@ -5,4 +5,5 @@
 * [API](api.md)
 * [Rest API](rest-api.md)
 * [Rest API with GO](untitled.md)
+* [Workshop](workshop.md)
 
