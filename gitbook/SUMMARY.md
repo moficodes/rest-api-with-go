@@ -4,5 +4,5 @@
 * [Setup](setup.md)
 * [API](api.md)
 * [Rest API](rest-api.md)
-* [Untitled](untitled.md)
+* [Rest API with GO](untitled.md)
 
