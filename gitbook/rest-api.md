@@ -1,8 +1,6 @@
 # Rest API
 
-Most APIs written this days are web apis. Don't quote me on that one because I didn't do any research to get a proper number. 😁But given the number of web services and web application I don't think I am too far off.
-
-
+Most APIs written this days are web apis. Don't quote me on that one because I didn't do any research to get a proper number. 😁 But given the number of web services and web application I don't think I am too far off.
 
 ## What is REST
 
