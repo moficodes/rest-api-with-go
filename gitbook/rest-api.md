@@ -144,5 +144,14 @@ The following are the most important terms related to REST APIs
 * **Collections** are set of resources, e.g _Companies_ is the collection of _Company_ resource.
 * **URL** \(Uniform **Resource** Locator\) is a path through which a **resource** can be located and some actions can be performed on it.
 
+### API Endpoint
+
+This is what a API endpoint looks like.
+
+| **protocol** | **domain** | **path** | **query** |
+| :--- | :--- | :--- | :--- |
+| _http/https_ | _base-url_ | _resource/some-other-resource_ | _key value pair_ |
+| https | github.com | golang/go/search | ?q=http&type=Commits |
+
 
 
