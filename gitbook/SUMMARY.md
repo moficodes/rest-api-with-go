@@ -5,5 +5,6 @@
 * [API](api.md)
 * [Rest API](rest-api.md)
 * [Rest API with GO](untitled.md)
-* [Workshop](workshop.md)
+* [Workshop](workshop/README.md)
+  * [Simple Rest API](workshop/simple-rest-api.md)
 
