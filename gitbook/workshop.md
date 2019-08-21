@@ -26,5 +26,11 @@ func main() {
 }
 ```
 
+If you had installed postman before, let's test our app with postman real quick.
 
+![](.gitbook/assets/image.png)
+
+Get returns us our message. 
+
+Great work! 
 
