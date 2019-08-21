@@ -203,5 +203,14 @@ https://jsonplaceholder.typicode.com/posts?userId=1
 
 Parts after the `?` is the query parameters. We have only one query here. `userId=1`
 
+#### Headers
 
+This was not part of the URL itself but header is a part of network component sent by the client or the server. Based on who sends it. There are two kinds of header
+
+1. Request Header \(client -&gt; server\)
+2. Response Header \(server -&gt; client\)
+
+#### Body
+
+You can add extra information to both the request to the server and to the response from the server.
 
