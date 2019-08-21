@@ -2,6 +2,16 @@
 
 So let's jump right into it.
 
+In a folder where you want to write your go code
+
+```text
+go mod init api-test
+```
+
+Create a new file, you can name it whatever you want.
+
+I am calling mine `main.go` 
+
 ```text
 package main
 
@@ -101,4 +111,47 @@ go run main.go
 ```
 
 Test it with postman or curl again.
+
+One thing you may have noticed is that we are using our server struct literally for attaching a method to.
+
+The go team knew this was an inconvenience and gave us `HandleFunc` Its a method on the http package that allows us to pass a function that has the same signature as the `ServeHTTP` and can serve a route.
+
+We can clean up our code a little bit with this
+
+```text
+package main
+
+import (
+	"log"
+	"net/http"
+)
+
+func home(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	switch r.Method {
+	case "GET":
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "get called"}`))
+	case "POST":
+		w.WriteHeader(http.StatusCreated)
+		w.Write([]byte(`{"message": "post called"}`))
+	case "PUT":
+		w.WriteHeader(http.StatusAccepted)
+		w.Write([]byte(`{"message": "put called"}`))
+	case "DELETE":
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "delete called"}`))
+	default:
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(`{"message": "not found"}`))
+	}
+}
+
+func main() {
+	http.HandleFunc("/", home)
+	log.Fatal(http.ListenAndServe(":8080", nil))
+}
+```
+
+Functionality should be exactly the same.
 

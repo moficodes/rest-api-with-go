@@ -2,12 +2,11 @@
 
 ### Required
 
-* You need Go installed.
-
-{% embed url="https://golang.org/doc/install" %}
-
+* [Go](https://golang.org/doc/install)
+* [Setup GOPATH](https://github.com/golang/go/wiki/SettingGOPATH)
 * [Install Postman](https://www.getpostman.com/)
 * curl \(should be available on linux and mac by default\). Windows users google or just use postman
+* [Git](https://git-scm.com/downloads)
 
 ### Optional
 

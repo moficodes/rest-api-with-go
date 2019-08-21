@@ -7,5 +7,5 @@
 * [Rest API with GO](untitled.md)
 * [Workshop](workshop/README.md)
   * [Simple Rest API](workshop/simple-rest-api.md)
-* [Gorilla Mux](gorilla-mux.md)
+  * [Gorilla Mux](workshop/gorilla-mux.md)
 
