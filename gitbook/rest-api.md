@@ -23,7 +23,7 @@ To see an example of a REST API we can use
 
 {% embed url="https://jsonplaceholder.typicode.com/" %}
 
-### HTTP Verbs and Status Codes
+### HTTP Verbs
 
 These are some conventions HTTP apis follow. These are actually not part of Rest specification. But we need to understand these to fully utilize Rest API.
 
@@ -50,16 +50,16 @@ HTTP defines a set of **request methods** to indicate the desired action to be p
 _THESE ARE ALL LIES._  
 
 
+### Status Codes
 
-
-#### **1×× Informational**
-
+{% tabs %}
+{% tab title="1xx Information" %}
 * [100 Continue](https://httpstatuses.com/100)
 * [101 Switching Protocols](https://httpstatuses.com/101)
 * [102 Processing](https://httpstatuses.com/102)
+{% endtab %}
 
-#### **2×× Success**
-
+{% tab title="2xx Success" %}
 * [200 OK](https://httpstatuses.com/200)
 * [201 Created](https://httpstatuses.com/201)
 * [202 Accepted](https://httpstatuses.com/202)
@@ -70,9 +70,9 @@ _THESE ARE ALL LIES._
 * [207 Multi-Status](https://httpstatuses.com/207)
 * [208 Already Reported](https://httpstatuses.com/208)
 * [226 IM Used](https://httpstatuses.com/226)
+{% endtab %}
 
-#### **3×× Redirection**
-
+{% tab title="3xx Redirects" %}
 * [300 Multiple Choices](https://httpstatuses.com/300)
 * [301 Moved Permanently](https://httpstatuses.com/301)
 * [302 Found](https://httpstatuses.com/302)
@@ -81,9 +81,9 @@ _THESE ARE ALL LIES._
 * [305 Use Proxy](https://httpstatuses.com/305)
 * [307 Temporary Redirect](https://httpstatuses.com/307)
 * [308 Permanent Redirect](https://httpstatuses.com/308)
+{% endtab %}
 
-#### **4×× Client Error**
-
+{% tab title="4xx Client Error" %}
 * [400 Bad Request](https://httpstatuses.com/400)
 * [401 Unauthorized](https://httpstatuses.com/401)
 * [402 Payment Required](https://httpstatuses.com/402)
@@ -114,9 +114,9 @@ _THESE ARE ALL LIES._
 * [444 Connection Closed Without Response](https://httpstatuses.com/444)
 * [451 Unavailable For Legal Reasons](https://httpstatuses.com/451)
 * [499 Client Closed Request](https://httpstatuses.com/499)
+{% endtab %}
 
-#### **5×× Server Error**
-
+{% tab title="5xx Server Error" %}
 * [500 Internal Server Error](https://httpstatuses.com/500)
 * [501 Not Implemented](https://httpstatuses.com/501)
 * [502 Bad Gateway](https://httpstatuses.com/502)
@@ -129,6 +129,20 @@ _THESE ARE ALL LIES._
 * [510 Not Extended](https://httpstatuses.com/510)
 * [511 Network Authentication Required](https://httpstatuses.com/511)
 * [599 Network Connect Timeout Error](https://httpstatuses.com/599)
+{% endtab %}
+{% endtabs %}
 
 This also has no actual meaning. 
+
+
+
+### **Terminologies**
+
+The following are the most important terms related to REST APIs
+
+* **Resource** is an object or representation of something, which has some associated data with it and there can be set of methods to operate on it. E.g. Animals, schools and employees are resources and _delete, add, update_ are the operations to be performed on these resources.
+* **Collections** are set of resources, e.g _Companies_ is the collection of _Company_ resource.
+* **URL** \(Uniform **Resource** Locator\) is a path through which a **resource** can be located and some actions can be performed on it.
+
+
 
