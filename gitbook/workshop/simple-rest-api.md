@@ -39,9 +39,15 @@ Then we have a struct called server. It has no fields. We will add a method to t
 
 To the response.
 
+Lets run our server
+
+```text
+go run main.go
+```
+
 If you had installed postman before, let's test our app with postman real quick.
 
-![](../.gitbook/assets/image.png)
+![](../.gitbook/assets/screen-shot-2019-08-21-at-1.04.26-pm.png)
 
 Get returns us our message. 
 
@@ -50,4 +56,49 @@ Great work!
 But Wait.
 
 Lets see what other HTTP verbs our application serves.
+
+In postman we can change the Type of request we make. Click on the dropdown and select something else. Lets say we do post.
+
+![](../.gitbook/assets/screen-shot-2019-08-21-at-1.11.56-pm.png)
+
+Now if we run the request, we get back the same result. 
+
+Well its not really a bug per se. But in most cases we probably want to do different things based on the request types.
+
+Lets see how we can do that.
+
+We will modify our ServeHTTP method with the following.
+
+```text
+func (s *server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	switch r.Method {
+	case "GET":
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "get called"}`))
+	case "POST":
+		w.WriteHeader(http.StatusCreated)
+		w.Write([]byte(`{"message": "post called"}`))
+	case "PUT":
+		w.WriteHeader(http.StatusAccepted)
+		w.Write([]byte(`{"message": "put called"}`))
+	case "DELETE":
+		w.WriteHeader(http.StatusOK)
+		w.Write([]byte(`{"message": "delete called"}`))
+	default:
+		w.WriteHeader(http.StatusNotFound)
+		w.Write([]byte(`{"message": "not found"}`))
+	}
+}
+```
+
+If our server is already running lets stop it with `ctrl-c`
+
+Run it again.
+
+```text
+go run main.go
+```
+
+Test it with postman or curl again.
 
