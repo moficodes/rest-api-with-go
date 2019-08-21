@@ -4,6 +4,8 @@
 
 Gorilla Mux is a very popular library that works really well to net/http package and helps us do a few things that makes api building a breeze. 
 
+### Using Gorilla Mux
+
 To install a module we can use `go get`
 
 Go get uses git under the hood.
@@ -55,6 +57,8 @@ func main() {
 ```
 
 Looks like nothing really changed except for a new import and line 32. 
+
+### HandleFunc HTTP Methods
 
 But now we can do a little bit more with our `HandleFunc` Like making each function handle a specific HTTP Method.
 
@@ -120,5 +124,22 @@ But think of it this way. Our code became much cleaner and much more readable.
 >
 > **Rob Pike**
 
-### 
+### Subrouter
+
+```text
+func main() {
+	r := mux.NewRouter()
+	api := r.PathPrefix("/api/v1").Subrouter()
+	api.HandleFunc("/", get).Methods(http.MethodGet)
+	api.HandleFunc("/", post).Methods(http.MethodPost)
+	api.HandleFunc("/", put).Methods(http.MethodPut)
+	api.HandleFunc("/", delete).Methods(http.MethodDelete)
+	api.HandleFunc("/", notFound)
+	log.Fatal(http.ListenAndServe(":8080", r))
+}
+```
+
+Everything else stays the same except we are creating something called a sub-router. Sub-router are really useful when we want to support multiple resources. Helps us group the content as well as save us from retyping the same path prefix.
+
+We move our api to `api/v1` . This way we can create v2 of our api if need be..
 
