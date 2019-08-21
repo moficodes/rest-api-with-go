@@ -212,3 +212,9 @@ This was not part of the URL itself but header is a part of network component se
 
 You can add extra information to both the request to the server and to the response from the server.
 
+### Response Type
+
+Usually JSON or XML.
+
+Now a days it's mostly JSON.
+
