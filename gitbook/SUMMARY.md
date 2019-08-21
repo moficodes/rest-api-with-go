@@ -8,4 +8,5 @@
 * [Workshop](workshop/README.md)
   * [Simple Rest API](workshop/simple-rest-api.md)
   * [Gorilla Mux](workshop/gorilla-mux.md)
+  * [Bookdata API](workshop/bookdata-api.md)
 

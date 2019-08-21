@@ -130,11 +130,11 @@ But think of it this way. Our code became much cleaner and much more readable.
 func main() {
 	r := mux.NewRouter()
 	api := r.PathPrefix("/api/v1").Subrouter()
-	api.HandleFunc("/", get).Methods(http.MethodGet)
-	api.HandleFunc("/", post).Methods(http.MethodPost)
-	api.HandleFunc("/", put).Methods(http.MethodPut)
-	api.HandleFunc("/", delete).Methods(http.MethodDelete)
-	api.HandleFunc("/", notFound)
+	api.HandleFunc("", get).Methods(http.MethodGet)
+	api.HandleFunc("", post).Methods(http.MethodPost)
+	api.HandleFunc("", put).Methods(http.MethodPut)
+	api.HandleFunc("", delete).Methods(http.MethodDelete)
+	api.HandleFunc("", notFound)
 	log.Fatal(http.ListenAndServe(":8080", r))
 }
 ```
@@ -142,4 +142,95 @@ func main() {
 Everything else stays the same except we are creating something called a sub-router. Sub-router are really useful when we want to support multiple resources. Helps us group the content as well as save us from retyping the same path prefix.
 
 We move our api to `api/v1` . This way we can create v2 of our api if need be..
+
+### Path and Query Parameter
+
+```text
+package main
+
+import (
+	"fmt"
+	"log"
+	"net/http"
+	"strconv"
+
+	"github.com/gorilla/mux"
+)
+
+func get(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(`{"message": "get called"}`))
+}
+
+func post(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusCreated)
+	w.Write([]byte(`{"message": "post called"}`))
+}
+
+func put(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusAccepted)
+	w.Write([]byte(`{"message": "put called"}`))
+}
+
+func delete(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte(`{"message": "delete called"}`))
+}
+
+func params(w http.ResponseWriter, r *http.Request) {
+	pathParams := mux.Vars(r)
+	w.Header().Set("Content-Type", "application/json")
+
+	userID := -1
+	var err error
+	if val, ok := pathParams["userID"]; ok {
+		userID, err = strconv.Atoi(val)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(`{"message": "need a number"}`))
+			return
+		}
+	}
+
+	commentID := -1
+	if val, ok := pathParams["commentID"]; ok {
+		commentID, err = strconv.Atoi(val)
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			w.Write([]byte(`{"message": "need a number"}`))
+			return
+		}
+	}
+
+	query := r.URL.Query()
+	location := query.Get("location")
+
+	w.Write([]byte(fmt.Sprintf(`{"userID": %d, "commentID": %d, "location": "%s" }`, userID, commentID, location)))
+}
+
+func main() {
+	r := mux.NewRouter()
+
+	api := r.PathPrefix("/api/v1").Subrouter()
+	api.HandleFunc("", get).Methods(http.MethodGet)
+	api.HandleFunc("", post).Methods(http.MethodPost)
+	api.HandleFunc("", put).Methods(http.MethodPut)
+	api.HandleFunc("", delete).Methods(http.MethodDelete)
+
+	api.HandleFunc("/user/{userID}/comment/{commentID}", params).Methods(http.MethodGet)
+
+	log.Fatal(http.ListenAndServe(":8080", r))
+}
+
+```
+
+Lets look at the `params`  functions on line 36. We handle both path param and query params.
+
+
+
+With this you now know enough to be dangerous.
 
