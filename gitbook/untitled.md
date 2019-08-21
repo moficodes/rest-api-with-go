@@ -21,5 +21,23 @@ The standard library in go comes with the `net/http` package, which is an excell
 
 We probably don't need to know everything in the net/http package. But there are a few things we should know to get started.
 
+### The Handler Interface
 
+I am never a proposer of memorizing something but as [Todd Mcleod](https://twitter.com/Todd_McLeod) in his course mentions over and over. We need to memorize the Handler interface.
+
+```text
+type Handler interface {
+        ServeHTTP(ResponseWriter, *Request)
+}
+```
+
+And here it is. 
+
+It has one method and one method only.
+
+A struct or object will be Handler if it has one method `ServeHTTP` which takes `ResponseWriter` and pointer to `Request`. 
+
+
+
+With all our knowledge now we are ready to do some damage.
 
