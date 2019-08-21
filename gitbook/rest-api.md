@@ -148,10 +148,60 @@ The following are the most important terms related to REST APIs
 
 This is what a API endpoint looks like.
 
-| **protocol** | **domain** | **path** | **query** |
-| :--- | :--- | :--- | :--- |
-| _http/https_ | _base-url_ | _resource/some-other-resource_ | _key value pair_ |
-| https | github.com | golang/go/search | ?q=http&type=Commits |
+```text
+https://www.github.com/golang/go/search?q=http&type=Commits
+```
+
+This URL can be broken into these parts
+
+| **protocol** | subdomain | **domain** | **path** | Port | **query** |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| _http/https_ | subdomain | _base-url_ | _resource/some-other-resource_ | some-port | _key value pair_ |
+| https | www | github.com | golang/go/search | 80 | ?q=http&type=Commits |
+
+#### Protocol
+
+How the browser or client should communicate with the server.
+
+#### Subdomain
+
+Sub Division of the main domain
+
+#### Domain
+
+Unique reference to identify web site on the internet
+
+#### Port
+
+Port on the server the application is running on. By default its 80. So most cases we don't see it 
+
+#### Path
+
+Path parameters in a Rest API represents resources.
+
+```text
+https://jsonplaceholder.typicode.com/posts/1/comments
+```
+
+`posts/1/comments`
+
+This path is representing the `1st` `posts` resource'c `comments` 
+
+Basic structure is 
+
+```text
+top-level-resource/<some-identifier>/secondary-resource/<some-identifier>/...
+```
+
+#### Query
+
+Queries are key value pairs of information, used mostly for filtering purposes.
+
+```text
+https://jsonplaceholder.typicode.com/posts?userId=1
+```
+
+Parts after the `?` is the query parameters. We have only one query here. `userId=1`
 
 
 
